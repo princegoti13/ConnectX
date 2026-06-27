@@ -8,22 +8,20 @@
  */
 
 const User = require("../models/User");
-
 const asyncHandler = require("../helpers/asyncHandler");
+const cookieOptions = require("../helpers/cookieOptions");
+const generateToken = require("../helpers/tokenHelper");
 
-const { hashPassword } = require("../helpers/passwordHelper");
+const { hashPassword, comparePassword } = require("../helpers/passwordHelper");
 
 const { successResponse, errorResponse } = require("../helpers/responseHelper");
 
-const generateToken = require("../helpers/tokenHelper");
-const { comparePassword } = require("../helpers/passwordHelper");
+/* =========================================
+   Register User
+========================================= */
 
 const registerUser = asyncHandler(async (req, res) => {
   const { firstName, lastName, username, email, password } = req.body;
-
-  // ===========================
-  // Email Exists
-  // ===========================
 
   const emailExists = await User.findOne({ email });
 
@@ -31,37 +29,19 @@ const registerUser = asyncHandler(async (req, res) => {
     return errorResponse(res, 400, "Email already exists.");
   }
 
-  // ===========================
-  // Username Exists
-  // ===========================
-
-  const usernameExists = await User.findOne({
-    username,
-  });
+  const usernameExists = await User.findOne({ username });
 
   if (usernameExists) {
     return errorResponse(res, 400, "Username already exists.");
   }
 
-  // ===========================
-  // Hash Password
-  // ===========================
-
   const hashedPassword = await hashPassword(password);
-
-  // ===========================
-  // Save User
-  // ===========================
 
   const newUser = await User.create({
     firstName,
-
     lastName,
-
     username,
-
     email,
-
     password: hashedPassword,
   });
 
@@ -73,6 +53,10 @@ const registerUser = asyncHandler(async (req, res) => {
     email: newUser.email,
   });
 });
+
+/* =========================================
+   Login User
+========================================= */
 
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -95,10 +79,11 @@ const loginUser = asyncHandler(async (req, res) => {
 
   const token = generateToken(user._id);
 
+  res.cookie("token", token, cookieOptions);
+
   return res.status(200).json({
     success: true,
     message: "Login Successful.",
-    token,
     user: {
       id: user._id,
       firstName: user.firstName,
@@ -109,7 +94,31 @@ const loginUser = asyncHandler(async (req, res) => {
   });
 });
 
+/* =========================================
+   Logout User
+========================================= */
+
+const logoutUser = asyncHandler(async (req, res) => {
+  res.clearCookie("token");
+
+  return successResponse(res, "Logout Successful.");
+});
+
+/* =========================================
+   Current User
+========================================= */
+
+const getCurrentUser = asyncHandler(async (req, res) => {
+  return successResponse(res, "Current User", req.user);
+});
+
+/* =========================================
+   Exports
+========================================= */
+
 module.exports = {
   registerUser,
   loginUser,
+  logoutUser,
+  getCurrentUser,
 };
