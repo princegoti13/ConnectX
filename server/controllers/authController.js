@@ -8,150 +8,108 @@
  */
 
 const User = require("../models/User");
-const validator = require("validator");
-const bcrypt = require("bcrypt");
 
-const registerUser = async (req, res) => {
-  try {
-    const { firstName, lastName, username, email, password, confirmPassword } =
-      req.body;
+const asyncHandler = require("../helpers/asyncHandler");
 
-    // ===========================
-    // Empty Validation
-    // ===========================
+const { hashPassword } = require("../helpers/passwordHelper");
 
-    if (
-      !firstName ||
-      !lastName ||
-      !username ||
-      !email ||
-      !password ||
-      !confirmPassword
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "All fields are required.",
-      });
-    }
+const { successResponse, errorResponse } = require("../helpers/responseHelper");
 
-    // ===========================
-    // Email Validation
-    // ===========================
+const generateToken = require("../helpers/tokenHelper");
+const { comparePassword } = require("../helpers/passwordHelper");
 
-    if (!validator.isEmail(email)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid email address.",
-      });
-    }
+const registerUser = asyncHandler(async (req, res) => {
+  const { firstName, lastName, username, email, password } = req.body;
 
-    // ===========================
-    // Password Match
-    // ===========================
+  // ===========================
+  // Email Exists
+  // ===========================
 
-    if (password !== confirmPassword) {
-      return res.status(400).json({
-        success: false,
-        message: "Passwords do not match.",
-      });
-    }
+  const emailExists = await User.findOne({ email });
 
-    // ===========================
-    // Password Strength
-    // ===========================
-
-    if (
-      !validator.isStrongPassword(password, {
-        minLength: 8,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1,
-      })
-    ) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Password must contain uppercase, lowercase, number and special character.",
-      });
-    }
-
-    // ===========================
-    // Check Email
-    // ===========================
-
-    const emailExists = await User.findOne({ email });
-
-    if (emailExists) {
-      return res.status(400).json({
-        success: false,
-        message: "Email already exists.",
-      });
-    }
-
-    // ===========================
-    // Check Username
-    // ===========================
-
-    const usernameExists = await User.findOne({
-      username,
-    });
-
-    if (usernameExists) {
-      return res.status(400).json({
-        success: false,
-        message: "Username already exists.",
-      });
-    }
-
-    // ===========================
-    // Hash Password
-    // ===========================
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // ===========================
-    // Save User
-    // ===========================
-
-    const newUser = await User.create({
-      firstName,
-
-      lastName,
-
-      username,
-
-      email,
-
-      password: hashedPassword,
-    });
-
-    return res.status(201).json({
-      success: true,
-
-      message: "Registration Successful.",
-
-      user: {
-        id: newUser._id,
-
-        firstName: newUser.firstName,
-
-        lastName: newUser.lastName,
-
-        username: newUser.username,
-
-        email: newUser.email,
-      },
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-
-      message: error.message,
-    });
+  if (emailExists) {
+    return errorResponse(res, 400, "Email already exists.");
   }
-};
+
+  // ===========================
+  // Username Exists
+  // ===========================
+
+  const usernameExists = await User.findOne({
+    username,
+  });
+
+  if (usernameExists) {
+    return errorResponse(res, 400, "Username already exists.");
+  }
+
+  // ===========================
+  // Hash Password
+  // ===========================
+
+  const hashedPassword = await hashPassword(password);
+
+  // ===========================
+  // Save User
+  // ===========================
+
+  const newUser = await User.create({
+    firstName,
+
+    lastName,
+
+    username,
+
+    email,
+
+    password: hashedPassword,
+  });
+
+  return successResponse(res, "Registration Successful.", {
+    id: newUser._id,
+    firstName: newUser.firstName,
+    lastName: newUser.lastName,
+    username: newUser.username,
+    email: newUser.email,
+  });
+});
+
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return errorResponse(res, 400, "Email and Password are required.");
+  }
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return errorResponse(res, 400, "Invalid Email or Password.");
+  }
+
+  const isMatch = await comparePassword(password, user.password);
+
+  if (!isMatch) {
+    return errorResponse(res, 400, "Invalid Email or Password.");
+  }
+
+  const token = generateToken(user._id);
+
+  return res.status(200).json({
+    success: true,
+    message: "Login Successful.",
+    token,
+    user: {
+      id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username,
+      email: user.email,
+    },
+  });
+});
 
 module.exports = {
   registerUser,
+  loginUser,
 };
