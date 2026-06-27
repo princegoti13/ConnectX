@@ -16,6 +16,7 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
 const app = express();
+const connectDB = require("./config/db");
 
 // ===============================
 // Middleware
@@ -41,6 +42,7 @@ app.get("/", (req, res) => {
 // ===============================
 // 404 Route
 // ===============================
+
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -52,6 +54,7 @@ app.use((req, res) => {
 // Server
 // ===============================
 const PORT = process.env.PORT || 5000;
+connectDB();
 
 app.listen(PORT, () => {
   console.log("=================================");
