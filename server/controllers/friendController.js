@@ -13,21 +13,21 @@ const asyncHandler = require("../helpers/asyncHandler");
 
 const { successResponse, errorResponse } = require("../helpers/responseHelper");
 
+const Friend = require("../models/Friend");
+
+const FriendRequest = require("../models/FriendRequest");
+
 /* =========================================
    Send Friend Request
 ========================================= */
 
 const sendFriendRequest = asyncHandler(async (req, res) => {
   const senderId = req.user._id;
-
   const receiverId = req.params.id;
 
-  // Cannot send request to yourself
   if (senderId.toString() === receiverId) {
-    return errorResponse(res, 400, "You cannot send a request to yourself.");
+    return errorResponse(res, 400, "You cannot send request to yourself.");
   }
-
-  const sender = await User.findById(senderId);
 
   const receiver = await User.findById(receiverId);
 
@@ -37,37 +37,47 @@ const sendFriendRequest = asyncHandler(async (req, res) => {
 
   // Already Friends
 
-  if (sender.friends.includes(receiverId)) {
-    return errorResponse(res, 400, "Already friends.");
+  const alreadyFriends = await Friend.findOne({
+    $or: [
+      {
+        user1: senderId,
+        user2: receiverId,
+      },
+
+      {
+        user1: receiverId,
+        user2: senderId,
+      },
+    ],
+  });
+
+  if (alreadyFriends) {
+    return errorResponse(res, 400, "Already Friends.");
   }
 
-  // Already Sent Request
+  // Already Pending
 
-  if (sender.sentRequests.includes(receiverId)) {
+  const pending = await FriendRequest.findOne({
+    sender: senderId,
+    receiver: receiverId,
+    status: "pending",
+  });
+
+  if (pending) {
     return errorResponse(res, 400, "Friend request already sent.");
   }
 
-  // Block Check
+  // Create Request
 
-  if (receiver.blockedUsers.includes(senderId)) {
-    return errorResponse(res, 403, "You are blocked by this user.");
-  }
+  await FriendRequest.create({
+    sender: senderId,
 
-  // Add Request
+    receiver: receiverId,
 
-  sender.sentRequests.push(receiverId);
+    status: "pending",
+  });
 
-  receiver.friendRequests.push(senderId);
-
-  await sender.save();
-
-  await receiver.save();
-
-  return successResponse(
-    res,
-
-    "Friend Request Sent Successfully.",
-  );
+  return successResponse(res, "Friend Request Sent Successfully.");
 });
 
 /* =========================================
