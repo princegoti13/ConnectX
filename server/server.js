@@ -19,6 +19,7 @@ const app = express();
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const friendRoutes = require("./routes/friendRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 
 // ===============================
 // Middleware
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/friends", friendRoutes);
+app.use("/api/chat", chatRoutes);
 
 // ===============================
 // Test Route
