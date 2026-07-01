@@ -1,0 +1,296 @@
+<!--
+---------------------------------------
+Project : ConnectX
+File : register.html
+Purpose : User Registration Page
+Author : Prince Goti
+---------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register | ConnectX</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="assets/css/auth.css">
+
+</head>
+
+<body>
+
+    <!-- Background -->
+
+    <div class="bg-circle circle1"></div>
+
+    <div class="bg-circle circle2"></div>
+
+    <div class="bg-circle circle3"></div>
+
+    <main class="login-container">
+
+        <!-- Left Side -->
+
+        <section class="login-left">
+
+            <div class="brand">
+
+                <div class="logo">
+
+                    CX
+
+                </div>
+
+                <h1>
+
+                    ConnectX
+
+                </h1>
+
+            </div>
+
+            <span class="badge">
+
+                Join ConnectX 🚀
+
+            </span>
+
+            <h2>
+
+                Create
+
+                <br>
+
+                Your Account
+
+            </h2>
+
+            <p>
+
+                Meet new friends, chat instantly and build your own social network.
+
+            </p>
+
+        </section>
+
+        <!-- Right Side -->
+
+        <section class="login-right">
+
+            <div class="login-card">
+
+                <h2>
+
+                    Register
+
+                </h2>
+
+                <p>
+
+                    Create your new ConnectX account
+
+                </p>
+
+                <form id="registerForm">
+
+                    <!-- First Name -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            First Name
+
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="firstName"
+                                placeholder="Enter First Name">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Last Name -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Last Name
+
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="lastName"
+                                placeholder="Enter Last Name">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Username -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Username
+
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-at"></i>
+
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="Choose Username">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Email
+
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Enter Email">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Password -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Password
+
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter Password">
+
+                            <i class="fa-solid fa-eye togglePassword"></i>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Confirm Password -->
+
+                    <div class="input-group">
+
+                        <label>
+
+                            Confirm Password
+
+                        </label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm Password">
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="login-btn">
+
+                        Create Account
+
+                    </button>
+
+                </form>
+
+                <p class="register">
+
+                    Already Have An Account?
+
+                    <a href="login.html">
+
+                        Login
+
+                    </a>
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="assets/js/api.js"></script>
+
+    <script src="assets/js/auth.js"></script>
+
+</body>
+
+</html>

@@ -20,7 +20,10 @@ const { successResponse, errorResponse } = require("../helpers/responseHelper");
    Register User
 ========================================= */
 
+
 const registerUser = asyncHandler(async (req, res) => {
+ console.log("Controller Body:", req.body);
+
   const { firstName, lastName, username, email, password } = req.body;
 
   const emailExists = await User.findOne({ email });
@@ -66,12 +69,16 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   const user = await User.findOne({ email });
+  console.log("Email :", email);
+
+  console.log("User :", user);
 
   if (!user) {
     return errorResponse(res, 400, "Invalid Email or Password.");
   }
 
   const isMatch = await comparePassword(password, user.password);
+  console.log("Password Match :", isMatch);
 
   if (!isMatch) {
     return errorResponse(res, 400, "Invalid Email or Password.");

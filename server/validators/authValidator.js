@@ -70,6 +70,7 @@ const validateRegister = (req, res, next) => {
     });
   }
 
+console.log("Validator Body:", req.body);
   next();
 };
 

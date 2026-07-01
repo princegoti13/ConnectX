@@ -1,0 +1,182 @@
+<!--
+---------------------------------------
+Project : ConnectX
+File : login.html
+Purpose : Login Page
+Author : Prince Goti
+---------------------------------------
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login | ConnectX</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="assets/css/auth.css" />
+  </head>
+
+  <body>
+    <!-- Background -->
+
+    <div class="bg-circle circle1"></div>
+    <div class="bg-circle circle2"></div>
+    <div class="bg-circle circle3"></div>
+
+    <main class="login-container">
+      <!-- Left -->
+
+      <section class="login-left">
+        <div class="brand">
+          <div class="logo">CX</div>
+
+          <h1>ConnectX</h1>
+        </div>
+
+        <span class="badge"> Welcome Back 👋 </span>
+
+        <h2>
+          Connect.
+
+          <br />
+
+          Chat.
+
+          <br />
+
+          Share.
+        </h2>
+
+        <p>
+          Login to continue your conversations and stay connected with your
+          friends.
+        </p>
+
+        <div class="feature-box">
+          <div class="feature">
+            <i class="fa-solid fa-user-group"></i>
+
+            <span>Friends Network</span>
+          </div>
+
+          <div class="feature">
+            <i class="fa-solid fa-comments"></i>
+
+            <span>Realtime Chat</span>
+          </div>
+
+          <div class="feature">
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <span>Secure Login</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right -->
+
+      <section class="login-right">
+        <div class="login-card">
+          <h2>Login</h2>
+
+          <p>Welcome back to ConnectX</p>
+
+          <form id="loginForm">
+            <!-- Email -->
+
+            <div class="input-group">
+              <label> Email </label>
+
+              <div class="input-box">
+                <i class="fa-solid fa-envelope"></i>
+
+                <input type="email" id="email" placeholder="Enter Your Email" />
+              </div>
+            </div>
+
+            <!-- Password -->
+
+            <div class="input-group">
+              <label> Password </label>
+
+              <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Enter Password"
+                />
+
+                <i class="fa-solid fa-eye togglePassword"> </i>
+              </div>
+            </div>
+
+            <div class="extra">
+              <label>
+                <input type="checkbox" />
+
+                Remember Me
+              </label>
+
+              <a href="#"> Forgot Password? </a>
+            </div>
+
+            <button class="login-btn">Login</button>
+          </form>
+
+          <div class="divider">OR</div>
+
+          <div class="social-login">
+            <button>
+              <i class="fa-brands fa-google"></i>
+            </button>
+
+            <button>
+              <i class="fa-brands fa-github"></i>
+            </button>
+
+            <button>
+              <i class="fa-brands fa-microsoft"></i>
+            </button>
+          </div>
+
+          <p class="register">
+            Don't Have An Account?
+
+            <a href="register.html"> Register </a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/api.js"></script>
+
+    <script src="assets/js/auth.js"></script>
+
+    <script src="assets/js/auth.js"></script>
+  </body>
+</html>

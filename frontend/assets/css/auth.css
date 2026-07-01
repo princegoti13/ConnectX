@@ -1,0 +1,428 @@
+/*
+---------------------------------------
+Project : ConnectX
+File : auth.css
+Purpose : Login & Register Page
+Author : Prince Goti
+---------------------------------------
+*/
+
+:root{
+
+    --primary:#4F46E5;
+    --secondary:#7C3AED;
+    --success:#22C55E;
+
+    --dark:#0F172A;
+    --card:rgba(30,41,59,.75);
+
+    --text:#FFFFFF;
+    --text-light:#CBD5E1;
+
+    --border:rgba(255,255,255,.08);
+
+    --shadow:0 20px 60px rgba(0,0,0,.45);
+
+    --radius:24px;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#0F172A;
+
+    font-family:'Poppins',sans-serif;
+
+    color:white;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.bg-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(130px);
+
+    z-index:-1;
+
+}
+
+.circle1{
+
+    width:420px;
+
+    height:420px;
+
+    background:#4338CA;
+
+    top:-150px;
+
+    left:-120px;
+
+}
+
+.circle2{
+
+    width:350px;
+
+    height:350px;
+
+    background:#7C3AED;
+
+    bottom:-120px;
+
+    right:-80px;
+
+}
+
+.circle3{
+
+    width:250px;
+
+    height:250px;
+
+    background:#2563EB;
+
+    top:40%;
+
+    left:45%;
+
+}
+
+.login-container{
+
+    width:90%;
+
+    max-width:1450px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:80px;
+
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:35px;
+
+}
+
+.logo{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+    135deg,
+    #4F46E5,
+    #7C3AED);
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    background:rgba(79,70,229,.18);
+
+    color:#A5B4FC;
+
+    border-radius:50px;
+
+    margin-bottom:30px;
+
+}
+
+.login-left h2{
+
+    font-size:72px;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+}
+
+.login-left p{
+
+    font-size:18px;
+
+    color:#CBD5E1;
+
+    line-height:1.9;
+
+    margin-bottom:45px;
+
+}
+
+.feature-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:rgba(255,255,255,.05);
+
+    padding:18px 25px;
+
+    border-radius:18px;
+
+    transition:.35s;
+
+}
+
+.feature:hover{
+
+    transform:translateX(12px);
+
+    background:#4F46E5;
+
+}
+
+.feature i{
+
+    font-size:22px;
+
+}
+
+.login-card{
+
+    background:rgba(30,41,59,.75);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    padding:50px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+
+}
+
+.login-card h2{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.login-card p{
+
+    color:#CBD5E1;
+
+    margin-bottom:35px;
+
+}
+
+.input-group{
+
+    margin-bottom:22px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+}
+
+.input-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:#334155;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    border:2px solid transparent;
+
+    transition:.35s;
+
+}
+
+.input-box:focus-within{
+
+    border-color:#4F46E5;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.togglePassword{
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.togglePassword:hover{
+
+    color:#818CF8;
+
+}
+
+.login-btn{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+    135deg,
+    #4F46E5,
+    #7C3AED);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.login-btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 40px rgba(79,70,229,.4);
+
+}
+
+@media(max-width:991px){
+
+.login-container{
+
+grid-template-columns:1fr;
+
+padding:120px 0;
+
+}
+
+.login-left{
+
+text-align:center;
+
+}
+
+.login-left h2{
+
+font-size:48px;
+
+}
+
+.login-card{
+
+margin-top:40px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.login-card{
+
+padding:30px;
+
+}
+
+}
+
+.login-btn:disabled{
+
+opacity:.8;
+
+cursor:not-allowed;
+
+}

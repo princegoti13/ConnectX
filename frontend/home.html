@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>ConnectX Dashboard</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet"
+href="assets/css/home.css">
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<div class="logo-circle">
+
+CX
+
+</div>
+
+<h2>
+
+ConnectX
+
+</h2>
+
+</div>
+
+<nav>
+
+<a class="active">
+
+<i class="fa-solid fa-house"></i>
+
+Home
+
+</a>
+
+<a>
+
+<i class="fa-solid fa-comments"></i>
+
+Chats
+
+</a>
+
+<a>
+
+<i class="fa-solid fa-user-group"></i>
+
+Friends
+
+</a>
+
+<a>
+
+<i class="fa-solid fa-bell"></i>
+
+Notifications
+
+</a>
+
+<a>
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</a>
+
+<a>
+
+<i class="fa-solid fa-gear"></i>
+
+Settings
+
+</a>
+
+<a id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</nav>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main">
+
+<header class="topbar">
+
+<div class="search">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+placeholder="Search Friends">
+
+</div>
+
+<div class="top-right">
+
+<button>
+
+<i class="fa-solid fa-bell"></i>
+
+</button>
+
+<div class="profile">
+
+<img src="https://i.pravatar.cc/150?img=15">
+
+<div>
+
+<h4 id="username">
+
+Prince
+
+</h4>
+
+<span>
+
+Online
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div>
+
+<h1>
+
+👋 Welcome Back,
+<span id="heroName">
+
+Prince
+
+</span>
+
+</h1>
+
+<p>
+
+Let's connect with your friends.
+
+</p>
+
+</div>
+
+<button>
+
++ Create Post
+
+</button>
+
+</section>
+
+<!-- Cards -->
+
+<section class="stats">
+
+<div class="card">
+
+<h2>
+
+120
+
+</h2>
+
+<p>
+
+Friends
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+58
+
+</h2>
+
+<p>
+
+Chats
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+18
+
+</h2>
+
+<p>
+
+Groups
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+8
+
+</h2>
+
+<p>
+
+Notifications
+
+</p>
+
+</div>
+
+</section>
+
+<!-- NEXT PART -->
+
+<section id="dashboardContent">
+
+    <!-- Stories -->
+
+    <div class="stories">
+
+        <h3>Stories</h3>
+
+        <div class="story-list">
+
+            <div class="story">
+                <img src="https://i.pravatar.cc/150?img=11">
+                <p>Prince</p>
+            </div>
+
+            <div class="story">
+                <img src="https://i.pravatar.cc/150?img=22">
+                <p>Rahul</p>
+            </div>
+
+            <div class="story">
+                <img src="https://i.pravatar.cc/150?img=33">
+                <p>Neha</p>
+            </div>
+
+            <div class="story">
+                <img src="https://i.pravatar.cc/150?img=44">
+                <p>Amit</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Feed -->
+
+    <div class="feed">
+
+        <div class="create-post">
+
+            <img src="https://i.pravatar.cc/150?img=11">
+
+            <input
+                type="text"
+                placeholder="What's On Your Mind?">
+
+            <button>
+
+                Post
+
+            </button>
+
+        </div>
+
+        <div class="post">
+
+            <div class="post-header">
+
+                <img src="https://i.pravatar.cc/150?img=22">
+
+                <div>
+
+                    <h4>Rahul Patel</h4>
+
+                    <span>2 Minutes Ago</span>
+
+                </div>
+
+            </div>
+
+            <p>
+
+                🚀 Finally ConnectX is becoming awesome.
+
+            </p>
+
+        </div>
+
+        <div class="post">
+
+            <div class="post-header">
+
+                <img src="https://i.pravatar.cc/150?img=55">
+
+                <div>
+
+                    <h4>Jay Shah</h4>
+
+                    <span>10 Minutes Ago</span>
+
+                </div>
+
+            </div>
+
+            <p>
+
+                ❤️ Waiting for real-time chat.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Online Friends -->
+
+    <div class="online">
+
+        <h3>
+
+            Online Friends
+
+        </h3>
+
+        <div class="online-list">
+
+            <div class="online-user">
+
+                <img src="https://i.pravatar.cc/150?img=66">
+
+                <div>
+
+                    <h4>Rahul</h4>
+
+                    <small>Online</small>
+
+                </div>
+
+            </div>
+
+            <div class="online-user">
+
+                <img src="https://i.pravatar.cc/150?img=77">
+
+                <div>
+
+                    <h4>Neha</h4>
+
+                    <small>Online</small>
+
+                </div>
+
+            </div>
+
+            <div class="online-user">
+
+                <img src="https://i.pravatar.cc/150?img=88">
+
+                <div>
+
+                    <h4>Amit</h4>
+
+                    <small>Online</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     Bottom Section
+=========================== -->
+
+<section class="bottom-grid">
+
+    <!-- Recent Chats -->
+
+    <div class="recent-chats">
+
+        <h3>Recent Chats</h3>
+
+        <div class="chat-user">
+
+            <img src="https://i.pravatar.cc/150?img=12">
+
+            <div>
+
+                <h4>Rahul Patel</h4>
+
+                <p>Hey, How Are You?</p>
+
+            </div>
+
+            <span>2m</span>
+
+        </div>
+
+        <div class="chat-user">
+
+            <img src="https://i.pravatar.cc/150?img=22">
+
+            <div>
+
+                <h4>Neha Shah</h4>
+
+                <p>Let's Meet Tomorrow</p>
+
+            </div>
+
+            <span>15m</span>
+
+        </div>
+
+        <div class="chat-user">
+
+            <img src="https://i.pravatar.cc/150?img=33">
+
+            <div>
+
+                <h4>Amit</h4>
+
+                <p>Okay 👍</p>
+
+            </div>
+
+            <span>1h</span>
+
+        </div>
+
+    </div>
+
+    <!-- Friend Suggestions -->
+
+    <div class="suggestions">
+
+        <h3>People You May Know</h3>
+
+        <div class="suggestion-user">
+
+            <img src="https://i.pravatar.cc/150?img=44">
+
+            <div>
+
+                <h4>Jay Patel</h4>
+
+                <small>12 Mutual Friends</small>
+
+            </div>
+
+            <button>Add</button>
+
+        </div>
+
+        <div class="suggestion-user">
+
+            <img src="https://i.pravatar.cc/150?img=55">
+
+            <div>
+
+                <h4>Riya</h4>
+
+                <small>8 Mutual Friends</small>
+
+            </div>
+
+            <button>Add</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<script src="assets/js/home.js"></script>
+
+</body>
+
+</html>

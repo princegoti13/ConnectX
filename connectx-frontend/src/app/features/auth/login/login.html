@@ -1,0 +1,123 @@
+<div class="login-page">
+
+    <div class="login-container">
+
+        <!-- Left -->
+
+        <div class="login-left">
+
+            <div class="brand">
+
+                <div class="logo">
+
+                    CX
+
+                </div>
+
+                <h1>ConnectX</h1>
+
+            </div>
+
+            <h2>
+
+                Welcome Back 👋
+
+            </h2>
+
+            <p>
+
+                Connect with your friends anytime,
+                anywhere.
+
+            </p>
+
+            <div class="circle one"></div>
+
+            <div class="circle two"></div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="login-right">
+
+            <form
+    [formGroup]="loginForm"
+    (ngSubmit)="login()">
+
+    <h2>
+
+        Login
+
+    </h2>
+
+    <p>
+
+        Sign in to continue
+
+    </p>
+
+    <div class="input-group">
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            formControlName="email"
+            placeholder="Enter Email">
+
+        @if(loginForm.controls['email'].touched &&
+            loginForm.controls['email'].invalid){
+
+            <small>
+
+                Valid Email Required
+
+            </small>
+
+        }
+
+    </div>
+
+    <div class="input-group">
+
+        <label>Password</label>
+
+        <input
+
+            [type]="hidePassword ? 'password':'text'"
+
+            formControlName="password"
+
+            placeholder="Enter Password">
+
+        @if(loginForm.controls['password'].touched &&
+            loginForm.controls['password'].invalid){
+
+            <small>
+
+                Password Required
+
+            </small>
+
+        }
+
+    </div>
+
+    <button
+
+        class="login-btn"
+
+        [disabled]="loading">
+
+        Login
+
+    </button>
+
+</form>
+
+        </div>
+
+    </div>
+
+</div>
