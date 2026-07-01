@@ -1,0 +1,106 @@
+<!--
+---------------------------------------
+Project : ConnectX
+File : verify-otp.html
+Purpose : Verify OTP
+Author : Prince Goti
+---------------------------------------
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Verify OTP | ConnectX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/css/auth.css" />
+  </head>
+
+  <body>
+    <div class="bg-circle circle1"></div>
+
+    <div class="bg-circle circle2"></div>
+
+    <div class="bg-circle circle3"></div>
+
+    <main class="login-container">
+      <section class="login-left">
+        <div class="brand">
+          <div class="logo">CX</div>
+
+          <h1>ConnectX</h1>
+        </div>
+
+        <span class="badge"> OTP Verification </span>
+
+        <h2>Verify Your OTP</h2>
+
+        <p>Enter the 6 digit OTP sent to your email.</p>
+      </section>
+
+      <section class="login-right">
+        <div class="login-card">
+          <h2>Verify OTP</h2>
+
+          <p>Enter Verification Code</p>
+
+          <form id="verifyOtpForm">
+            <!-- <div class="input-group">
+              <label> Email </label>
+
+              <div class="input-box">
+                <i class="fa-solid fa-envelope"></i>
+
+                <input type="email" id="email" placeholder="Enter Email" />
+              </div>
+            </div> -->
+
+            <div class="input-group">
+              <label> OTP </label>
+
+              <div class="input-box">
+                <i class="fa-solid fa-key"></i>
+
+                <input
+                  type="text"
+                  maxlength="6"
+                  id="otp"
+                  placeholder="Enter 6 Digit OTP"
+                />
+              </div>
+            </div>
+
+            <button class="login-btn" type="submit">Verify OTP</button>
+          </form>
+
+          <p class="register">
+            Back To
+
+            <a href="login.html"> Login </a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/api.js"></script>
+
+    <script src="assets/js/verifyOtp.js"></script>
+  </body>
+</html>

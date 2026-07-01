@@ -1,22 +1,24 @@
 /*
 ---------------------------------------
 Project : ConnectX
-File : forgotPassword.js
-Purpose : Forgot Password
+File : verifyOtp.js
+Purpose : Verify OTP
 Author : Prince Goti
 ---------------------------------------
 */
 
-const forgotForm = document.querySelector("#forgotPasswordForm");
+const verifyForm = document.querySelector("#verifyOtpForm");
 
-if (forgotForm) {
-  forgotForm.addEventListener("submit", async (e) => {
+if (verifyForm) {
+  verifyForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = document.querySelector("#email").value.trim();
+    const email = localStorage.getItem("resetEmail");
 
-    if (!email) {
-      alert("Please Enter Email.");
+    const otp = document.querySelector("#otp").value.trim();
+
+    if (!otp) {
+      alert("Please Enter OTP.");
 
       return;
     }
@@ -27,11 +29,11 @@ if (forgotForm) {
 
     button.innerHTML = `
             <i class="fa-solid fa-spinner fa-spin"></i>
-            Sending OTP...
+            Verifying...
         `;
 
     try {
-      const response = await fetch(API.sendOtp, {
+      const response = await fetch(API.verifyOtp, {
         method: "POST",
 
         headers: {
@@ -40,6 +42,8 @@ if (forgotForm) {
 
         body: JSON.stringify({
           email,
+
+          otp,
         }),
       });
 
@@ -48,11 +52,7 @@ if (forgotForm) {
       if (result.success) {
         alert(result.message);
 
-        // Email Save for Next Page
-        localStorage.setItem("resetEmail", email);
-
-        // Go to OTP Page
-        window.location.href = "verify-otp.html";
+        window.location.href = "reset-password.html";
       } else {
         alert(result.message);
       }
@@ -63,7 +63,7 @@ if (forgotForm) {
     } finally {
       button.disabled = false;
 
-      button.innerHTML = "Send OTP";
+      button.innerHTML = "Verify OTP";
     }
   });
 }

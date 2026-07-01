@@ -20,6 +20,7 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const friendRoutes = require("./routes/friendRoutes");
 const chatRoutes = require("./routes/chatRoutes");
+const passwordRoutes = require("./routes/passwordRoutes");
 
 // ===============================
 // Middleware
@@ -42,6 +43,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/friends", friendRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/password",passwordRoutes,);
 
 // ===============================
 // Test Route

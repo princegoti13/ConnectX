@@ -15,4 +15,8 @@ const API = {
   register: `${BASE_URL}/auth/register`,
 
   currentUser: `${BASE_URL}/auth/me`,
+  sendOtp: `${BASE_URL}/password/send-otp`,
+  verifyOtp: `${BASE_URL}/password/verify-otp`,
+  resetPassword: `${BASE_URL}/password/reset-password`,
 };
+
